@@ -4,6 +4,5 @@ abstract class CharactersEvent {
 
 class LoadingCharactersEvent extends CharactersEvent {
   final bool isLoading;
-
   LoadingCharactersEvent({required this.isLoading});
 }

@@ -19,12 +19,19 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       emitter(LoadingCharactersState());
     }
     final result = await _loadCharactersUsecase(const NoParam());
-    result.fold(
-        (exception) =>
-            emitter(ErrorLoadCharactersState(message: exception.toString())),
-        (characters) {
+    result.fold((exception) {
+      //ErrorLoadCharactersState
+      emitter(
+        ErrorLoadCharactersState(
+          message: exception.toString(),
+        ),
+      );
+    }, (characters) {
+      // SuccessLoadCharactersState
       allCharacters = characters;
-      emitter(SuccessLoadCharactersState(characters: characters));
+      emitter(
+        SuccessLoadCharactersState(characters: characters),
+      );
     });
   }
 }
