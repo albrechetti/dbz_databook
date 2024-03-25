@@ -50,18 +50,14 @@ class _CharacterSliderControllerWidgetState
             children: [
               GestureDetector(
                 onTap: widget.previous,
-                child: SvgPicture.asset(
-                  AppAssets.backBtn,
-                ),
+                child: Image.asset(AppAssets.backBtn),
               ),
               const Spacer(),
               GestureDetector(
                 onTap: widget.next,
                 child: Transform.flip(
                   flipX: true,
-                  child: SvgPicture.asset(
-                    AppAssets.backBtn,
-                  ),
+                  child: Image.asset(AppAssets.backBtn),
                 ),
               ),
             ],

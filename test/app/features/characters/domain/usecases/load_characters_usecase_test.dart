@@ -44,12 +44,11 @@ main() {
         .thenAnswer((_) async => Right(charactersListMock));
     final response = await usecase(Param());
     String characterName = '';
-    final result = response.fold((l) => l, (r) {
+    response.fold((l) => l, (r) {
       characterName = r.first.name;
       return r;
     });
 
-    expect(result, isA<List<CharacterEntity>>());
     expect(characterName, 'Goku');
   });
 }

@@ -50,9 +50,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 },
                 child: Row(
                   children: [
-                    SvgPicture.asset(
-                      AppAssets.backBtn,
-                    ),
+                    Image.asset(AppAssets.backBtn),
                     const SizedBox(width: 16),
                     const Text(
                       'Voltar',

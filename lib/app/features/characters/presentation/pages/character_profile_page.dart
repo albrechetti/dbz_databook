@@ -3,7 +3,6 @@ import 'package:dbz_databook/app/features/characters/characters.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/core.dart';
 import '../../../../shared/shared.dart';
@@ -77,7 +76,7 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
             ),
             backgroundColor: Theme.of(context).colorScheme.background,
             leading: IconButton(
-              icon: SvgPicture.asset(
+              icon: Image.asset(
                 AppAssets.backBtn,
               ),
               onPressed: () {
@@ -103,15 +102,22 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              _transformations[_initialIndex].name,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
+                            SizedBox(
+                              width: 200,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  _transformations[_initialIndex].name,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ),
+                                ),
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -151,7 +157,7 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
             children: [
               Container(
                 padding: const EdgeInsets.all(20.0),
-                height: 300,
+                height: 250,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -303,12 +309,13 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                         )
                       ],
                     ),
-                    const Spacer(),
-                    Image.network(
-                      widget.character.image,
-                      width: 154,
-                      fit: BoxFit.contain,
-                      alignment: Alignment.bottomRight,
+                    Flexible(
+                      child: Image.network(
+                        widget.character.image,
+                        width: 154,
+                        fit: BoxFit.contain,
+                        alignment: Alignment.bottomRight,
+                      ),
                     ),
                   ],
                 ),
@@ -364,29 +371,32 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                             ],
                           ),
                         ),
-                        child: SizedBox(
-                          height: 320,
-                          child: CarouselSlider.builder(
-                            itemCount: _transformations.length,
-                            carouselController: _carouselController,
-                            options: CarouselOptions(
-                              height: 320,
-                              aspectRatio: 16 / 9,
-                              onPageChanged: (index, reason) {
-                                _initialIndex = index;
-                                setState(() {});
+                        child: Flexible(
+                          child: SizedBox(
+                            height: 240,
+                            child: CarouselSlider.builder(
+                              itemCount: _transformations.length,
+                              carouselController: _carouselController,
+                              options: CarouselOptions(
+                                height: 240,
+                                clipBehavior: Clip.antiAlias,
+                                aspectRatio: 16 / 9,
+                                onPageChanged: (index, reason) {
+                                  _initialIndex = index;
+                                  setState(() {});
+                                },
+                              ),
+                              itemBuilder:
+                                  (BuildContext context, int itemIndex, int i) {
+                                _initialIndex = itemIndex;
+
+                                return Image.network(
+                                  _transformations[itemIndex].image,
+                                  height: 240,
+                                  fit: BoxFit.fitHeight,
+                                );
                               },
                             ),
-                            itemBuilder:
-                                (BuildContext context, int itemIndex, int i) {
-                              _initialIndex = itemIndex;
-
-                              return Image.network(
-                                _transformations[itemIndex].image,
-                                height: 320,
-                                fit: BoxFit.fitHeight,
-                              );
-                            },
                           ),
                         ),
                       ),

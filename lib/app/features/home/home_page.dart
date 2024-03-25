@@ -27,7 +27,11 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.only(
+                  top: 60,
+                  left: 20,
+                  right: 20,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -56,7 +60,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const Positioned(
-              top: 60,
+              top: 50,
               child: SizedBox(
                 child: Image(
                   image: AssetImage(AppAssets.dragon),

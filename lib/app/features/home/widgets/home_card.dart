@@ -33,41 +33,7 @@ class HomeCard extends StatelessWidget {
                 ),
               ),
               color: Theme.of(context).colorScheme.surface,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: !inverse
-                      ? MainAxisAlignment.end
-                      : MainAxisAlignment.start,
-                  children: [
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Text(
-                        title,
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.secondary,
-                          shadows: [
-                            Shadow(
-                              color: Theme.of(context).colorScheme.surface,
-                              offset: const Offset(1, 1),
-                              blurRadius: 0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                  ],
-                ),
-              ),
+              child: const Center(),
             ),
           ),
           Positioned(
@@ -75,11 +41,46 @@ class HomeCard extends StatelessWidget {
             right: inverse ? -20 : null,
             top: -20,
             child: SizedBox(
-              width: 220,
+              width: 180,
               child: Image(
                 image: AssetImage(image),
                 fit: BoxFit.contain,
               ),
+            ),
+          ),
+          Positioned(
+            bottom: 55,
+            width: MediaQuery.of(context).size.width - 48,
+            child: Row(
+              mainAxisAlignment:
+                  !inverse ? MainAxisAlignment.end : MainAxisAlignment.start,
+              children: [
+                const SizedBox(width: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.secondary,
+                      shadows: [
+                        Shadow(
+                          color: Theme.of(context).colorScheme.surface,
+                          offset: const Offset(1, 1),
+                          blurRadius: 0,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ],
             ),
           ),
         ],
