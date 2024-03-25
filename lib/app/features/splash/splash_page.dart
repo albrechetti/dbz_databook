@@ -1,5 +1,5 @@
+import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -46,7 +46,7 @@ class _SplashPageState extends State<SplashPage>
               Column(
                 children: [
                   Image(
-                    image: AssetImage('assets/dbz_logo.png'),
+                    image: AssetImage(AppAssets.dbzLogo),
                     fit: BoxFit.fitWidth,
                     width: 320,
                   ),

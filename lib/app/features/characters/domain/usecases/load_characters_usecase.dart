@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 
-
 import '../../../../core/core.dart';
 import '../domain.dart';
 
 abstract class ILoadCharactersUsecase
-    implements IFutureUseCase<NoParam, List<CharacterEntity>> {}
+    implements IFutureUsecase<NoParam, List<CharacterEntity>> {}
 
 class LoadCharactersUsecase implements ILoadCharactersUsecase {
   final ILoadCharactersRepository _repository;
@@ -14,7 +13,7 @@ class LoadCharactersUsecase implements ILoadCharactersUsecase {
       : _repository = repository;
 
   @override
-  Future<Either<Exception, List<CharacterEntity>>> call(NoParam param) async {
+  Future<Either<Exception, List<CharacterEntity>>> call(NoParam parm) async {
     return await _repository.loadCharacters();
   }
 }

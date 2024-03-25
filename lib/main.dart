@@ -1,10 +1,6 @@
-import 'package:dbz_databook/app/features/splash/splash_page.dart';
+import 'package:dbz_databook/app/features/characters/characters.dart';
 import 'package:flutter/material.dart';
-
-import 'app/core/utils/app_injections.dart';
-import 'app/features/characters/characteres_injection.dart';
-import 'app/features/characters/presentation/pages/characters/characters_page.dart';
-import 'app/features/home/home_page.dart';
+import 'app/core/core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +13,8 @@ void main() async {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/splash',
-      routes: {
-        '/splash': (context) => const SplashPage(),
-        '/home': (context) => const HomePage(),
-        '/characters': (context) => const CharactersPage(),
-      },
+      initialRoute: AppRoutes.initialRoute,
+      routes: AppRoutes.routes,
     ),
   );
 }

@@ -1,5 +1,7 @@
-import 'package:dbz_databook/app/features/home/widgets/home_card.dart';
+import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/home_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -45,15 +47,15 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeCard(
-                        image: 'assets/characters.png',
+                        image: AppAssets.characters,
                         title: 'Personagens',
                         inverse: false),
                     HomeCard(
-                        image: 'assets/planets.png',
+                        image: AppAssets.planets,
                         title: 'Planetas',
                         inverse: true),
                     HomeCard(
-                        image: 'assets/transformations.png',
+                        image: AppAssets.transformations,
                         title: 'Transformações',
                         inverse: false),
                   ],
@@ -64,7 +66,7 @@ class HomePage extends StatelessWidget {
               top: 60,
               child: SizedBox(
                 child: Image(
-                  image: AssetImage('assets/dragon.png'),
+                  image: AssetImage(AppAssets.dragon),
                   fit: BoxFit.fitWidth,
                   width: 80,
                 ),

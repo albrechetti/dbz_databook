@@ -1,4 +1,4 @@
-import '../../../domain/domain.dart';
+import '../../domain/domain.dart';
 
 abstract class CharactersState {
   const CharactersState();

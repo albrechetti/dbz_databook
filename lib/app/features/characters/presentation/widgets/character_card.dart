@@ -1,10 +1,11 @@
-import 'package:dbz_databook/app/features/characters/domain/entities/character_entity.dart';
 import 'package:flutter/material.dart';
 
-class CharacterCard extends StatelessWidget {
-  CharacterEntity character;
+import '../../domain/domain.dart';
 
-  CharacterCard({
+class CharacterCard extends StatelessWidget {
+  final CharacterEntity character;
+
+  const CharacterCard({
     super.key,
     required this.character,
   });
@@ -15,7 +16,11 @@ class CharacterCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/characters');
+          Navigator.popAndPushNamed(
+            context,
+            '/character-profile',
+            arguments: character,
+          );
         },
         child: Stack(
           clipBehavior: Clip.none,
@@ -44,7 +49,7 @@ class CharacterCard extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xffEEE8D8),
+                            color: Color(0xffF37317),
                             shadows: [
                               Shadow(
                                 color: Color(0xff2A231C),
@@ -57,23 +62,64 @@ class CharacterCard extends StatelessWidget {
                         const SizedBox(height: 8),
                         Row(
                           children: [
-                            Text(character.race),
+                            Text(
+                              character.race,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xffF37317),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             const SizedBox(width: 8),
-                            Text(character.gender)
+                            Text(
+                              character.gender,
+                              style: const TextStyle(
+                                color: Color(0xffEEE8D8),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text('Poder base:'),
+                            const Text(
+                              'Poder base:',
+                              style: TextStyle(
+                                color: Color(0xffF37317),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             const SizedBox(width: 8),
-                            Text(character.ki)
+                            Text(
+                              character.ki,
+                              style: const TextStyle(
+                                color: Color(0xffEEE8D8),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
                           ],
                         ),
                         Row(
                           children: [
-                            const Text('Afiliação:'),
+                            const Text(
+                              'Afiliação:',
+                              style: TextStyle(
+                                  color: Color(0xffF37317),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
                             const SizedBox(width: 8),
-                            Text(character.affiliation)
+                            Text(
+                              character.affiliation,
+                              style: const TextStyle(
+                                color: Color(0xffEEE8D8),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -84,13 +130,12 @@ class CharacterCard extends StatelessWidget {
             ),
             Positioned(
               right: 0,
-              top: -16,
+              top: 0,
               child: SizedBox(
-                height: 200,
-                child: Image.network(
-                  character.image,
-                  fit: BoxFit.fitHeight,
-                ),
+                width: 164,
+                height: 164,
+                child: Image.network(character.image,
+                    fit: BoxFit.fitHeight, alignment: Alignment.bottomRight),
               ),
             ),
           ],

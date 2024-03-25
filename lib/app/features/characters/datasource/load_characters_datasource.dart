@@ -8,8 +8,10 @@ class LoadCharactersDatasource implements ILoadCharactersDatasource {
       : _httpService = httpService;
 
   @override
-  Future<List<Map<String, dynamic>>> loadCharacters() async {
-    final getParam = GetParam(url: ApiPaths.characters, params: {});
+  Future<List<Map<String, dynamic>>> loadCharacters(
+      {String? characterID}) async {
+    final getParam = GetParam(
+        url: '${ApiPaths.characters}/${characterID ?? ''}', params: {});
 
     final response = await _httpService.getAllCharacters(getParam);
     return response;

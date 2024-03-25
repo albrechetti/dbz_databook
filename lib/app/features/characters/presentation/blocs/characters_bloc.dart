@@ -1,13 +1,14 @@
+import 'package:dbz_databook/app/core/core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/core.dart';
-import '../../../domain/domain.dart';
+import '../../domain/domain.dart';
 import 'characters_event.dart';
 import 'characters_state.dart';
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final ILoadCharactersUsecase _loadCharactersUsecase;
   List<CharacterEntity> allCharacters = [];
+  List<TransformationEntity> characterTransformations = [];
   CharactersBloc({required ILoadCharactersUsecase loadCharactersUsecase})
       : _loadCharactersUsecase = loadCharactersUsecase,
         super(LoadingCharactersState()) {

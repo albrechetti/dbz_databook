@@ -1,30 +1,25 @@
-import 'package:dbz_databook/app/features/characters/domain/domain.dart';
-import 'package:dbz_databook/app/features/characters/presentation/blocs/characters/characters_event.dart';
-import 'package:dbz_databook/app/features/characters/presentation/blocs/characters/characters_state.dart';
-import 'package:dbz_databook/app/features/characters/presentation/widgets/character_card.dart';
-import 'package:dbz_databook/app/shared/widgets/custom_circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/utils/app_injections.dart';
-import '../../blocs/characters/characters_bloc.dart';
+import '../../../../core/utils/app_injections.dart';
+import '../../../../shared/shared.dart';
+import '../../characters.dart';
 
-class CharactersPage extends StatefulWidget {
-  const CharactersPage({super.key});
+class CharactersListPage extends StatefulWidget {
+  const CharactersListPage({super.key});
 
   @override
-  State<CharactersPage> createState() => _CharactersPageState();
+  State<CharactersListPage> createState() => _CharactersListPageState();
 }
 
-class _CharactersPageState extends State<CharactersPage> {
+class _CharactersListPageState extends State<CharactersListPage> {
   final _bloc = sl.get<CharactersBloc>();
   final _characters = <CharacterEntity>[];
   late double _appBarHeight;
 
   //loadCharacters
   loadCharacters({bool isLoading = true}) {
-    _bloc.add(LoadingCharactersEvent(isLoading: isLoading));
+    _bloc.add(LoadingCharactersEvent(isLoading: isLoading, characterID: null));
   }
 
   @override
@@ -53,57 +48,7 @@ class _CharactersPageState extends State<CharactersPage> {
         backgroundColor: const Color(0xFF192E46),
         automaticallyImplyLeading: false,
       ),
-      bottomNavigationBar: Container(
-        clipBehavior: Clip.antiAlias,
-        height: 100,
-        decoration: const BoxDecoration(
-          border: BorderDirectional(
-            top: BorderSide(
-              color: Color(0xFF2A231C),
-              width: 4,
-            ),
-            end: BorderSide(
-              color: Color(0xFF2A231C),
-              width: 4,
-            ),
-            start: BorderSide(
-              color: Color(0xFF2A231C),
-              width: 4,
-            ),
-          ),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40),
-            topRight: Radius.circular(40),
-          ),
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Color(0xFF3D71AC),
-              Color(0xFF192E46),
-            ],
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  children: [
-                    SvgPicture.asset('assets/back_btn.svg'),
-                    const SizedBox(width: 16),
-                    const Text('Voltar'),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
       body: BlocConsumer<CharactersBloc, CharactersState>(
         bloc: _bloc,
         listener: (context, state) {
