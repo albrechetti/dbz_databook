@@ -32,7 +32,6 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadTransformations();
   }
@@ -56,9 +55,9 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
       },
       builder: (context, state) {
         if (state is LoadingCharacterTransformationsState) {
-          return const Scaffold(
-            backgroundColor: Color(0xFF192E46),
-            body: Center(child: CustomCircularProgressIndicator()),
+          return Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
+            body: const Center(child: CustomCircularProgressIndicator()),
           );
         } else if (state is ErrorLoadCharacterTransformationsState) {
           return Center(
@@ -66,25 +65,23 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
           );
         }
         return Scaffold(
-          backgroundColor: const Color(0xFF192E46),
+          backgroundColor: Theme.of(context).colorScheme.background,
           extendBody: true,
           appBar: AppBar(
             elevation: 0,
             title: Text(
               widget.character.name,
-              style: const TextStyle(
-                color: Color(0xFFF37317),
-                fontWeight: FontWeight.w900,
-                fontSize: 36,
-              ),
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
             ),
-            backgroundColor: const Color(0xFF192E46),
+            backgroundColor: Theme.of(context).colorScheme.background,
             leading: IconButton(
               icon: SvgPicture.asset(
                 AppAssets.backBtn,
               ),
               onPressed: () {
-                Navigator.popAndPushNamed(context, '/characters');
+                Navigator.pop(context);
               },
             ),
           ),
@@ -108,30 +105,38 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                           children: [
                             Text(
                               _transformations[_initialIndex].name,
-                              style: const TextStyle(
-                                color: Color(0xffF37317),
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
+                                Text(
                                   'Total Ki: ',
-                                  style: TextStyle(
-                                    color: Color(0xffF37317),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                      ),
                                 ),
                                 Text(
                                   _transformations[_initialIndex].ki,
-                                  style: const TextStyle(
-                                    color: Color(0xffEEE8D8),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w900,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                      ),
                                 ),
                               ],
                             ),
@@ -160,114 +165,138 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                           children: [
                             Text(
                               widget.character.race,
-                              style: const TextStyle(
-                                color: Color(0xFFF37317),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Text(
                               widget.character.gender,
-                              style: const TextStyle(
-                                color: Color(0xffEEE8D8),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               'Base Ki:',
-                              style: TextStyle(
-                                color: Color(0xFFF37317),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Text(
                               widget.character.ki,
-                              style: const TextStyle(
-                                color: Color(0xffEEE8D8),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 20,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               'Total Ki:',
-                              style: TextStyle(
-                                color: Color(0xFFF37317),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Text(
                               widget.character.maxKi,
-                              style: const TextStyle(
-                                color: Color(0xffEEE8D8),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               'Afiliação:',
-                              style: TextStyle(
-                                color: Color(0xFFF37317),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Text(
                               widget.character.affiliation,
-                              style: const TextStyle(
-                                color: Color(0xffEEE8D8),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text(
+                            Text(
                               'Transformações:',
-                              style: TextStyle(
-                                color: Color(0xFFF37317),
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                             ),
                             const SizedBox(width: 16),
                             Visibility(
                               visible: _transformations.isNotEmpty,
-                              replacement: const Text(
+                              replacement: Text(
                                 'N/A',
-                                style: TextStyle(
-                                  color: Color(0xffEEE8D8),
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
                               ),
                               child: Text(
                                 '${_transformations.length}',
-                                style: const TextStyle(
-                                  color: Color(0xffEEE8D8),
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 16,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleSmall!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
                               ),
                             ),
                           ],
@@ -288,15 +317,7 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xFFF37317),
-                        Color(0xFFF37317),
-                        Color(0xFFF39E3D),
-                      ],
-                    ),
+                    gradient: CustomThemeData.orangeGradient,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
@@ -304,21 +325,44 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                   ),
                   child: Column(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.all(12.0),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
                         child: Text(
                           'Transformações',
-                          style: TextStyle(
-                            color: Color(0xffEEE8D8),
-                            fontWeight: FontWeight.w900,
-                            fontSize: 24,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
                         ),
                       ),
                       Visibility(
                         visible: _transformations.isNotEmpty,
-                        replacement: const Center(
-                          child: Center(child: Text('Sem transformações')),
+                        replacement: SizedBox(
+                          height: 320,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.error,
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                size: 48,
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                'Sem transformações',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                              ),
+                            ],
+                          ),
                         ),
                         child: SizedBox(
                           height: 320,

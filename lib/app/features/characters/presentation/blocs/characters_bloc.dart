@@ -8,7 +8,7 @@ import 'characters_state.dart';
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final ILoadCharactersUsecase _loadCharactersUsecase;
   List<CharacterEntity> allCharacters = [];
-  List<TransformationEntity> characterTransformations = [];
+
   CharactersBloc({required ILoadCharactersUsecase loadCharactersUsecase})
       : _loadCharactersUsecase = loadCharactersUsecase,
         super(LoadingCharactersState()) {

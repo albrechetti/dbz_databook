@@ -10,9 +10,7 @@ void main() async {
     MaterialApp(
       title: 'DBZ Databook',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomThemeData.themeData,
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.routes,
     ),

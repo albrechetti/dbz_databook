@@ -1,4 +1,5 @@
 import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
+import 'package:dbz_databook/app/core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/home_card.dart';
@@ -11,15 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF192E46),
-              Color(0xFF000000),
-              Color(0xFF000000),
-            ],
-          ),
+          gradient: CustomThemeData.darkGradient,
         ),
         child: Stack(
           alignment: Alignment.center,
@@ -27,37 +20,37 @@ class HomePage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 100),
               decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFFF37317),
-                    Color(0xFFF37317),
-                    Color(0xFFF39E3D),
-                  ],
-                ),
+                gradient: CustomThemeData.orangeGradient,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40),
                   topRight: Radius.circular(40),
                 ),
               ),
-              child: const Padding(
-                padding: EdgeInsets.all(24),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     HomeCard(
-                        image: AppAssets.characters,
-                        title: 'Personagens',
-                        inverse: false),
-                    HomeCard(
-                        image: AppAssets.planets,
-                        title: 'Planetas',
-                        inverse: true),
-                    HomeCard(
-                        image: AppAssets.transformations,
-                        title: 'Transformações',
-                        inverse: false),
+                      image: AppAssets.characters,
+                      title: 'Personagens',
+                      inverse: false,
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoutes.characters);
+                      },
+                    ),
+                    const HomeCard(
+                      image: AppAssets.planets,
+                      title: 'Planetas',
+                      inverse: true,
+                      onTap: null,
+                    ),
+                    const HomeCard(
+                      image: AppAssets.transformations,
+                      title: 'Transformações',
+                      inverse: false,
+                      onTap: null,
+                    ),
                   ],
                 ),
               ),

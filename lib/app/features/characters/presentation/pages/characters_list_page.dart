@@ -1,7 +1,7 @@
+import 'package:dbz_databook/app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/app_injections.dart';
 import '../../../../shared/shared.dart';
 import '../../characters.dart';
 
@@ -32,20 +32,19 @@ class _CharactersListPageState extends State<CharactersListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF192E46),
+      backgroundColor: Theme.of(context).colorScheme.background,
       extendBody: true,
       appBar: AppBar(
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: const Text(
+        title: Text(
           'Personagens',
-          style: TextStyle(
-            color: Color(0xFFF37317),
-            fontWeight: FontWeight.w900,
-          ),
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF192E46),
+        backgroundColor: Theme.of(context).colorScheme.background,
         automaticallyImplyLeading: false,
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),
@@ -71,26 +70,23 @@ class _CharactersListPageState extends State<CharactersListPage> {
                   height:
                       MediaQuery.of(context).size.height - _appBarHeight - 24,
                   decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xFF192E46),
-                        Color(0xFF000000),
-                        Color(0xFF000000),
-                      ],
-                    ),
+                    gradient: CustomThemeData.darkGradient,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           'Carregando personagens...',
-                          style: TextStyle(color: Colors.white),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
                         ),
-                        SizedBox(height: 24),
-                        CustomCircularProgressIndicator()
+                        const SizedBox(height: 24),
+                        const CustomCircularProgressIndicator()
                       ],
                     ),
                   ),
@@ -105,15 +101,7 @@ class _CharactersListPageState extends State<CharactersListPage> {
           return Container(
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFFF37317),
-                  Color(0xFFF37317),
-                  Color(0xFFF39E3D),
-                ],
-              ),
+              gradient: CustomThemeData.orangeGradient,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),

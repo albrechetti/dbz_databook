@@ -16,11 +16,10 @@ class CharacterTransformationsBloc
   }
 
   _loadingCharacterTransformationsEvent(
-      LoadingCharacterTransformationsEvent, Emitter emitter) async {
-    if (LoadingCharacterTransformationsEvent.isLoading) {}
+      LoadingCharacterTransformationsEvent event, Emitter emitter) async {
+    if (event.isLoading) {}
 
-    final result = await _loadTransformationsUsecase(
-        LoadingCharacterTransformationsEvent.characterID);
+    final result = await _loadTransformationsUsecase(event.characterID);
     result.fold((exception) {
       emitter(
         ErrorLoadCharacterTransformationsState(

@@ -4,19 +4,20 @@ class HomeCard extends StatelessWidget {
   final String image;
   final String title;
   final bool inverse;
+  final Function()? onTap;
 
-  const HomeCard(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.inverse});
+  const HomeCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.inverse,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/characters');
-      },
+      onTap: onTap,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -26,12 +27,12 @@ class HomeCard extends StatelessWidget {
               elevation: 8,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24),
-                side: const BorderSide(
-                  color: Color(0xffF37317),
+                side: BorderSide(
+                  color: Theme.of(context).colorScheme.primary,
                   width: 4,
                 ),
               ),
-              color: const Color(0xff2A231C),
+              color: Theme.of(context).colorScheme.surface,
               child: Center(
                 child: Row(
                   mainAxisAlignment: !inverse
@@ -45,19 +46,18 @@ class HomeCard extends StatelessWidget {
                         vertical: 8,
                       ),
                       decoration: BoxDecoration(
-                        color: const Color(0xffF37317),
+                        color: Theme.of(context).colorScheme.primary,
                         borderRadius: BorderRadius.circular(40),
                       ),
                       child: Text(
                         title,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xffEEE8D8),
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.secondary,
                           shadows: [
                             Shadow(
-                              color: Color(0xff2A231C),
-                              offset: Offset(1, 1),
+                              color: Theme.of(context).colorScheme.surface,
+                              offset: const Offset(1, 1),
                               blurRadius: 0,
                             ),
                           ],

@@ -3,6 +3,7 @@ export 'commons/constants/app_assets.dart';
 export 'commons/constants/app_routes.dart';
 export 'commons/interfaces/i_future_usecase.dart';
 export 'commons/params/no_param.dart';
+export 'commons/theme/custom_theme_data.dart';
 export 'services/custom_logger.dart';
 export 'services/http_service/api_interceptor.dart';
 export 'services/http_service/api_paths.dart';
