@@ -1,6 +1,5 @@
-import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
+import 'package:dbz_databook/app/core/core.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});
@@ -9,7 +8,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      height: 80,
+      height: Responsively.auto(80, MediaQuery.of(context)),
       width: double.infinity,
       decoration: const BoxDecoration(
         border: BorderDirectional(
@@ -51,7 +50,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(AppAssets.backBtn),
-                    const SizedBox(width: 16),
+                    SizedBox(
+                        width: Responsively.auto(12, MediaQuery.of(context))),
                     const Text(
                       'Voltar',
                       style: TextStyle(
@@ -66,7 +66,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               const Spacer(),
               Image.asset(
                 AppAssets.dragon,
-                width: 80,
+                width: Responsively.auto(80, MediaQuery.of(context)),
               ),
             ],
           ),

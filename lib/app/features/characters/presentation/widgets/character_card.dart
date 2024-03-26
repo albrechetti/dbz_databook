@@ -1,4 +1,3 @@
-import 'package:dbz_databook/app/core/commons/commons.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
@@ -28,7 +27,7 @@ class CharacterCard extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             SizedBox(
-              height: 164,
+              height: Responsively.auto(180, MediaQuery.of(context)),
               child: Card(
                 elevation: 8,
                 shape: RoundedRectangleBorder(

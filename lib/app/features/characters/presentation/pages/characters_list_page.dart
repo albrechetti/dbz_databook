@@ -64,36 +64,24 @@ class _CharactersListPageState extends State<CharactersListPage> {
         },
         builder: (context, state) {
           if (state is LoadingCharactersState) {
-            return Column(
-              children: [
-                Container(
-                  height:
-                      MediaQuery.of(context).size.height - _appBarHeight - 24,
-                  decoration: const BoxDecoration(
-                    gradient: CustomThemeData.darkGradient,
-                  ),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Carregando personagens...',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
-                        ),
-                        SizedBox(
-                            height:
-                                Responsively.auto(24, MediaQuery.of(context))),
-                        const CustomCircularProgressIndicator()
-                      ],
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Carregando personagens...',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ),
                     ),
-                  ),
+                    SizedBox(
+                        height: Responsively.auto(24, MediaQuery.of(context))),
+                    const CustomCircularProgressIndicator()
+                  ],
                 ),
-              ],
+              ),
             );
           } else if (state is ErrorLoadCharactersState) {
             return Center(
