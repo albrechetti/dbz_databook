@@ -1,3 +1,4 @@
+import 'package:dbz_databook/app/core/helpers/responsively.dart';
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
@@ -22,7 +23,7 @@ class HomeCard extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           SizedBox(
-            height: 164,
+            height: Responsively.auto(200, MediaQuery.of(context)),
             child: Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
@@ -37,11 +38,14 @@ class HomeCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: !inverse ? -20 : null,
-            right: inverse ? -20 : null,
-            top: -20,
+            left: !inverse
+                ? Responsively.auto(-20, MediaQuery.of(context))
+                : null,
+            right:
+                inverse ? Responsively.auto(-20, MediaQuery.of(context)) : null,
+            top: Responsively.auto(-5, MediaQuery.of(context)),
             child: SizedBox(
-              width: 180,
+              width: Responsively.auto(220, MediaQuery.of(context)),
               child: Image(
                 image: AssetImage(image),
                 fit: BoxFit.contain,
@@ -49,17 +53,18 @@ class HomeCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 55,
-            width: MediaQuery.of(context).size.width - 48,
+            bottom: Responsively.auto(60, MediaQuery.of(context)),
+            width: MediaQuery.of(context).size.width -
+                Responsively.auto(48, MediaQuery.of(context)),
             child: Row(
               mainAxisAlignment:
                   !inverse ? MainAxisAlignment.end : MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 8),
+                SizedBox(width: Responsively.auto(24, MediaQuery.of(context))),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Responsively.auto(12, MediaQuery.of(context)),
+                    vertical: Responsively.auto(4, MediaQuery.of(context)),
                   ),
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primary,
@@ -68,6 +73,7 @@ class HomeCard extends StatelessWidget {
                   child: Text(
                     title,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontSize: Responsively.auto(24, MediaQuery.of(context)),
                       color: Theme.of(context).colorScheme.secondary,
                       shadows: [
                         Shadow(
@@ -79,7 +85,7 @@ class HomeCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: Responsively.auto(12, MediaQuery.of(context))),
               ],
             ),
           ),

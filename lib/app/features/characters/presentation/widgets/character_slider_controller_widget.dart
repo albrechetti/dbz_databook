@@ -1,7 +1,5 @@
-import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:dbz_databook/app/core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CharacterSliderControllerWidget extends StatefulWidget {
   final Function() previous;

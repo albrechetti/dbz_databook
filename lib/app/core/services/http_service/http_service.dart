@@ -39,17 +39,4 @@ class HttpService implements IHttpService {
       rethrow;
     }
   }
-
-  // @override
-  // Future<List<Map<String, dynamic>>> getCharactersTransformations(
-  //     GetParam param) async {
-  //   final response = await _dio.get(
-  //     param.url,
-  //     queryParameters: param.params,
-  //   );
-  //   AppLogger.important.i('Data: ${response.data}');
-  //   final list = response.data;
-  //   final transformations = List<Map<String, dynamic>>.from(list);
-  //   return transformations;
-  // }
 }

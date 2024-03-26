@@ -1,6 +1,6 @@
 import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({super.key});

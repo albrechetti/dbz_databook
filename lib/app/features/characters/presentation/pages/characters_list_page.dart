@@ -85,7 +85,9 @@ class _CharactersListPageState extends State<CharactersListPage> {
                                 color: Theme.of(context).colorScheme.secondary,
                               ),
                         ),
-                        const SizedBox(height: 24),
+                        SizedBox(
+                            height:
+                                Responsively.auto(24, MediaQuery.of(context))),
                         const CustomCircularProgressIndicator()
                       ],
                     ),

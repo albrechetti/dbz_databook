@@ -1,6 +1,7 @@
 import 'package:dbz_databook/app/core/commons/commons.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/core.dart';
 import '../../domain/domain.dart';
 
 class CharacterCard extends StatelessWidget {
@@ -14,7 +15,7 @@ class CharacterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(Responsively.auto(20, MediaQuery.of(context))),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(
@@ -31,7 +32,8 @@ class CharacterCard extends StatelessWidget {
               child: Card(
                 elevation: 8,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(
+                      Responsively.auto(24, MediaQuery.of(context))),
                   side: BorderSide(
                     color: Theme.of(context).colorScheme.primary,
                     width: 4,
@@ -39,7 +41,8 @@ class CharacterCard extends StatelessWidget {
                 ),
                 color: Theme.of(context).colorScheme.surface,
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(
+                      Responsively.auto(20, MediaQuery.of(context))),
                   child: SizedBox(
                     width: double.infinity,
                     child: Column(
@@ -59,7 +62,9 @@ class CharacterCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(
+                          height: Responsively.auto(8, MediaQuery.of(context)),
+                        ),
                         Row(
                           children: [
                             Text(
@@ -72,7 +77,10 @@ class CharacterCard extends StatelessWidget {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(
+                              height:
+                                  Responsively.auto(8, MediaQuery.of(context)),
+                            ),
                             Text(
                               character.gender,
                               style: Theme.of(context)
@@ -97,7 +105,10 @@ class CharacterCard extends StatelessWidget {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(
+                              height:
+                                  Responsively.auto(8, MediaQuery.of(context)),
+                            ),
                             Text(
                               character.ki,
                               style: Theme.of(context)
@@ -122,7 +133,10 @@ class CharacterCard extends StatelessWidget {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(
+                              height:
+                                  Responsively.auto(8, MediaQuery.of(context)),
+                            ),
                             Text(
                               character.affiliation,
                               style: Theme.of(context)
@@ -145,8 +159,8 @@ class CharacterCard extends StatelessWidget {
               right: 0,
               top: 0,
               child: SizedBox(
-                width: 164,
-                height: 164,
+                width: Responsively.auto(180, MediaQuery.of(context)),
+                height: Responsively.auto(180, MediaQuery.of(context)),
                 child: Image.network(character.image,
                     fit: BoxFit.fitHeight, alignment: Alignment.bottomRight),
               ),

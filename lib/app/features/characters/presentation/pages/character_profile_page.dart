@@ -98,12 +98,14 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                     Positioned(
                       bottom: 0,
                       child: Container(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                            Responsively.auto(8, MediaQuery.of(context))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 200,
+                              width: Responsively.auto(
+                                  200, MediaQuery.of(context)),
                               child: FittedBox(
                                 fit: BoxFit.scaleDown,
                                 child: Text(
@@ -156,8 +158,9 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
           body: Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(20.0),
-                height: 250,
+                padding: EdgeInsets.all(
+                    Responsively.auto(20, MediaQuery.of(context))),
+                height: Responsively.auto(250, MediaQuery.of(context)),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -179,7 +182,10 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            SizedBox(
+                              width:
+                                  Responsively.auto(16, MediaQuery.of(context)),
+                            ),
                             Text(
                               widget.character.gender,
                               style: Theme.of(context)
@@ -204,7 +210,10 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            SizedBox(
+                              width:
+                                  Responsively.auto(16, MediaQuery.of(context)),
+                            ),
                             Text(
                               widget.character.ki,
                               style: Theme.of(context)
@@ -229,7 +238,10 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            SizedBox(
+                              width:
+                                  Responsively.auto(16, MediaQuery.of(context)),
+                            ),
                             Text(
                               widget.character.maxKi,
                               style: Theme.of(context)
@@ -254,7 +266,12 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            SizedBox(
+                              width: Responsively.auto(
+                                16,
+                                MediaQuery.of(context),
+                              ),
+                            ),
                             Text(
                               widget.character.affiliation,
                               style: Theme.of(context)
@@ -279,7 +296,12 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                                         Theme.of(context).colorScheme.primary,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            SizedBox(
+                              width: Responsively.auto(
+                                16,
+                                MediaQuery.of(context),
+                              ),
+                            ),
                             Visibility(
                               visible: _transformations.isNotEmpty,
                               replacement: Text(
@@ -312,7 +334,7 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                     Flexible(
                       child: Image.network(
                         widget.character.image,
-                        width: 154,
+                        width: Responsively.auto(200, MediaQuery.of(context)),
                         fit: BoxFit.contain,
                         alignment: Alignment.bottomRight,
                       ),
@@ -323,17 +345,21 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: CustomThemeData.orangeGradient,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40),
+                      topLeft: Radius.circular(
+                          Responsively.auto(40, MediaQuery.of(context))),
+                      topRight: Radius.circular(
+                          Responsively.auto(40, MediaQuery.of(context))),
                     ),
                   ),
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(
+                          Responsively.auto(12, MediaQuery.of(context)),
+                        ),
                         child: Text(
                           'Transformações',
                           style: Theme.of(context)
@@ -347,16 +373,21 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                       Visibility(
                         visible: _transformations.isNotEmpty,
                         replacement: SizedBox(
-                          height: 320,
+                          height:
+                              Responsively.auto(320, MediaQuery.of(context)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.error,
                                 color: Theme.of(context).colorScheme.onPrimary,
-                                size: 48,
+                                size: Responsively.auto(
+                                    48, MediaQuery.of(context)),
                               ),
-                              const SizedBox(height: 16),
+                              SizedBox(
+                                height: Responsively.auto(
+                                    16, MediaQuery.of(context)),
+                              ),
                               Text(
                                 'Sem transformações',
                                 style: Theme.of(context)
@@ -371,32 +402,34 @@ class _CharacterProfilePageState extends State<CharacterProfilePage> {
                             ],
                           ),
                         ),
-                        child: Flexible(
-                          child: SizedBox(
-                            height: 240,
-                            child: CarouselSlider.builder(
-                              itemCount: _transformations.length,
-                              carouselController: _carouselController,
-                              options: CarouselOptions(
-                                height: 240,
-                                clipBehavior: Clip.antiAlias,
-                                aspectRatio: 16 / 9,
-                                onPageChanged: (index, reason) {
-                                  _initialIndex = index;
-                                  setState(() {});
-                                },
-                              ),
-                              itemBuilder:
-                                  (BuildContext context, int itemIndex, int i) {
-                                _initialIndex = itemIndex;
-
-                                return Image.network(
-                                  _transformations[itemIndex].image,
-                                  height: 240,
-                                  fit: BoxFit.fitHeight,
-                                );
+                        child: SizedBox(
+                          height:
+                              Responsively.auto(360, MediaQuery.of(context)),
+                          width: double.infinity,
+                          child: CarouselSlider.builder(
+                            itemCount: _transformations.length,
+                            carouselController: _carouselController,
+                            options: CarouselOptions(
+                              height: Responsively.auto(
+                                  360, MediaQuery.of(context)),
+                              clipBehavior: Clip.antiAlias,
+                              aspectRatio: 16 / 9,
+                              onPageChanged: (index, reason) {
+                                _initialIndex = index;
+                                setState(() {});
                               },
                             ),
+                            itemBuilder:
+                                (BuildContext context, int itemIndex, int i) {
+                              _initialIndex = itemIndex;
+
+                              return Image.network(
+                                _transformations[itemIndex].image,
+                                height: Responsively.auto(
+                                    360, MediaQuery.of(context)),
+                                fit: BoxFit.fitHeight,
+                              );
+                            },
                           ),
                         ),
                       ),

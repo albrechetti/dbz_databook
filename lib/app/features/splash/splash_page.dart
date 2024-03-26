@@ -1,6 +1,8 @@
 import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/core.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -38,19 +40,19 @@ class _SplashPageState extends State<SplashPage>
             ],
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 128),
+              SizedBox(height: Responsively.auto(128, MediaQuery.of(context))),
               Column(
                 children: [
                   Image(
-                    image: AssetImage(AppAssets.dbzLogo),
+                    image: const AssetImage(AppAssets.dbzLogo),
                     fit: BoxFit.fitWidth,
-                    width: 320,
+                    width: Responsively.auto(320, MediaQuery.of(context)),
                   ),
-                  Text(
+                  const Text(
                     'Databook',
                     style: TextStyle(
                       color: Colors.white,

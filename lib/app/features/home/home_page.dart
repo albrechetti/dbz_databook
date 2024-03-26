@@ -18,19 +18,22 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 100),
-              decoration: const BoxDecoration(
+              margin: EdgeInsets.only(
+                  top: Responsively.auto(100, MediaQuery.of(context))),
+              decoration: BoxDecoration(
                 gradient: CustomThemeData.orangeGradient,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
+                  topLeft: Radius.circular(
+                      Responsively.auto(40, MediaQuery.of(context))),
+                  topRight: Radius.circular(
+                      Responsively.auto(40, MediaQuery.of(context))),
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 60,
-                  left: 20,
-                  right: 20,
+                padding: EdgeInsets.only(
+                  top: Responsively.auto(60, MediaQuery.of(context)),
+                  left: Responsively.auto(20, MediaQuery.of(context)),
+                  right: Responsively.auto(20, MediaQuery.of(context)),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -59,13 +62,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
-              top: 50,
+            Positioned(
+              top: Responsively.auto(50, MediaQuery.of(context)),
               child: SizedBox(
                 child: Image(
-                  image: AssetImage(AppAssets.dragon),
+                  image: const AssetImage(AppAssets.dragon),
                   fit: BoxFit.fitWidth,
-                  width: 80,
+                  width: Responsively.auto(80, MediaQuery.of(context)),
                 ),
               ),
             ),
