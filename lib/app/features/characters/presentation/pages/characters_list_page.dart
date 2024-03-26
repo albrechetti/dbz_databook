@@ -15,7 +15,6 @@ class CharactersListPage extends StatefulWidget {
 class _CharactersListPageState extends State<CharactersListPage> {
   final _bloc = sl.get<CharactersBloc>();
   final _characters = <CharacterEntity>[];
-  late double _appBarHeight;
 
   //loadCharacters
   loadCharacters({bool isLoading = true}) {
@@ -26,7 +25,6 @@ class _CharactersListPageState extends State<CharactersListPage> {
   void initState() {
     super.initState();
     loadCharacters();
-    _appBarHeight = AppBar().preferredSize.height;
   }
 
   @override
@@ -64,25 +62,7 @@ class _CharactersListPageState extends State<CharactersListPage> {
         },
         builder: (context, state) {
           if (state is LoadingCharactersState) {
-            return SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Carregando personagens...',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                    ),
-                    SizedBox(
-                        height: Responsively.auto(24, MediaQuery.of(context))),
-                    const CustomCircularProgressIndicator()
-                  ],
-                ),
-              ),
-            );
+            return const CustomCircularProgressIndicator();
           } else if (state is ErrorLoadCharactersState) {
             return Center(
               child: Text(state.message),
@@ -90,6 +70,8 @@ class _CharactersListPageState extends State<CharactersListPage> {
           }
           return Container(
             clipBehavior: Clip.hardEdge,
+            padding:
+                EdgeInsets.all(Responsively.auto(20, MediaQuery.of(context))),
             decoration: const BoxDecoration(
               gradient: CustomThemeData.orangeGradient,
               borderRadius: BorderRadius.only(
@@ -101,8 +83,12 @@ class _CharactersListPageState extends State<CharactersListPage> {
               itemCount: _characters.length,
               itemBuilder: (context, index) {
                 final CharacterEntity character = _characters[index];
-                return CharacterCard(
-                  character: character,
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: Responsively.auto(20, MediaQuery.of(context))),
+                  child: CharacterCard(
+                    character: character,
+                  ),
                 );
               },
             ),

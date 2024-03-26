@@ -8,6 +8,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
+      padding: EdgeInsets.all(
+        Responsively.auto(8, MediaQuery.of(context)),
+      ),
       height: Responsively.auto(80, MediaQuery.of(context)),
       width: double.infinity,
       decoration: const BoxDecoration(
@@ -38,39 +41,33 @@ class CustomBottomNavigationBar extends StatelessWidget {
           ],
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Expanded(
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Row(
-                  children: [
-                    Image.asset(AppAssets.backBtn),
-                    SizedBox(
-                        width: Responsively.auto(12, MediaQuery.of(context))),
-                    const Text(
-                      'Voltar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Row(
+              children: [
+                Image.asset(AppAssets.backBtn),
+                SizedBox(width: Responsively.auto(12, MediaQuery.of(context))),
+                const Text(
+                  'Voltar',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const Spacer(),
-              Image.asset(
-                AppAssets.dragon,
-                width: Responsively.auto(80, MediaQuery.of(context)),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+          const Spacer(),
+          Image.asset(
+            AppAssets.dragon,
+            width: Responsively.auto(80, MediaQuery.of(context)),
+          ),
+        ],
       ),
     );
   }

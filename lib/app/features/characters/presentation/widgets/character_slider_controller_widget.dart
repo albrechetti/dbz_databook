@@ -18,6 +18,7 @@ class _CharacterSliderControllerWidgetState
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
+      padding: EdgeInsets.all(Responsively.auto(8, MediaQuery.of(context))),
       height: 80,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -41,26 +42,21 @@ class _CharacterSliderControllerWidgetState
         ),
         gradient: CustomThemeData.bottomBarGradient,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Expanded(
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: widget.previous,
-                child: Image.asset(AppAssets.backBtn),
-              ),
-              const Spacer(),
-              GestureDetector(
-                onTap: widget.next,
-                child: Transform.flip(
-                  flipX: true,
-                  child: Image.asset(AppAssets.backBtn),
-                ),
-              ),
-            ],
+      child: Row(
+        children: [
+          GestureDetector(
+            onTap: widget.previous,
+            child: Image.asset(AppAssets.backBtn),
           ),
-        ),
+          const Spacer(),
+          GestureDetector(
+            onTap: widget.next,
+            child: Transform.flip(
+              flipX: true,
+              child: Image.asset(AppAssets.backBtn),
+            ),
+          ),
+        ],
       ),
     );
   }
