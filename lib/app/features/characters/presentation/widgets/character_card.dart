@@ -25,7 +25,7 @@ class CharacterCard extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           SizedBox(
-            height: Responsively.auto(180, MediaQuery.of(context)),
+            height: Responsively.auto(200, MediaQuery.of(context)),
             child: Card(
               elevation: 8,
               shape: RoundedRectangleBorder(
