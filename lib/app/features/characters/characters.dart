@@ -1,7 +1,7 @@
 export 'characters_injection.dart';
-export 'datasource/datasource.dart';
-export 'datasource/load_characters_datasource.dart';
-export 'datasource/load_transformations_datasource.dart';
+export 'external/datasource.dart';
+export 'external/load_characters_datasource.dart';
+export 'external/load_transformations_datasource.dart';
 export 'domain/domain.dart';
 export 'domain/entities/character_entity.dart';
 export 'domain/entities/transformation_entity.dart';

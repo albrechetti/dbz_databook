@@ -1,11 +1,12 @@
-import 'package:dbz_databook/app/features/characters/characters.dart';
 import 'package:flutter/material.dart';
 import 'app/core/core.dart';
+import 'app/features/features.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initInjections();
   await initCharactersInjection();
+  await initPlanetsInjection();
   return runApp(
     MaterialApp(
       title: 'DBZ Databook',

@@ -62,7 +62,7 @@ class _CharactersListPageState extends State<CharactersListPage> {
         },
         builder: (context, state) {
           if (state is LoadingCharactersState) {
-            return const CustomCircularProgressIndicator();
+            return const Center(child: CustomCircularProgressIndicator());
           } else if (state is ErrorLoadCharactersState) {
             return Center(
               child: Text(state.message),

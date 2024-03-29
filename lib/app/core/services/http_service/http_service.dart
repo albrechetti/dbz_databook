@@ -39,4 +39,20 @@ class HttpService implements IHttpService {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Map<String, dynamic>>> getAllPlanets(GetParam param) async {
+    try {
+      final response = await _dio.get(
+        param.url,
+        queryParameters: param.params,
+      );
+      AppLogger.important.i('Data: ${response.data}');
+      final list = response.data['items'];
+      final items = List<Map<String, dynamic>>.from(list);
+      return items;
+    } on Exception {
+      rethrow;
+    }
+  }
 }

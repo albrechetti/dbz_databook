@@ -41,11 +41,12 @@ class HomePage extends StatelessWidget {
                       Navigator.pushNamed(context, AppRoutes.characters);
                     },
                   ),
-                  const HomeCard(
+                  HomeCard(
                     image: AppAssets.planets,
                     title: 'Planetas',
                     inverse: true,
-                    onTap: null,
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.planets),
                   ),
                   const HomeCard(
                     image: AppAssets.transformations,

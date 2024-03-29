@@ -1,4 +1,3 @@
-import 'package:dbz_databook/app/core/commons/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/core.dart';

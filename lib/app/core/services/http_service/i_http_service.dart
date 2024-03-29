@@ -1,6 +1,7 @@
 abstract class IHttpService {
   Future<List<Map<String, dynamic>>> getAllCharacters(GetParam param);
   Future<Map<String, dynamic>> getCharactersTransformations(GetParam param);
+  Future<List<Map<String, dynamic>>> getAllPlanets(GetParam param);
 }
 
 class GetParam {
